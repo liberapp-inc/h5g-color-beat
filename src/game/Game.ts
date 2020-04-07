@@ -8,8 +8,8 @@ const BACK_COLOR = 0x000000;    // index.htmlで設定
 const FONT_COLOR = 0xff80e0;
 const FONT2_COLOR = 0xf080ff;
 
-const GameSpeedLowPH = 1/120;
-const GameSpeedTopPH = 1/45;
+const GameSpeedLowPH = 1/200;
+const GameSpeedTopPH = 1/100;
 
 class Game extends GameObject{
 
@@ -81,18 +81,18 @@ class Game extends GameObject{
             const w = Util.w(TilePerW);
             const lane = randI( 0, 3+1 );
             let x = Util.w(0.5) + (lane-1.5) * w;
-            let y = -0.5 * Util.h( TilePerH );
+            let y = -0.5 * w;
 
             // if( randBool( 0.8 ) ){
                 new Tile( x, y );
-                this.next += randI( 1, 4+1 ) * Util.h(TilePerH);
+                this.next += randI( 1, 4+1 ) * w;
             // }else{
             //     if( randBool( 0.7 ) ){
                     // new TileLong( x, y );
-                    // this.next += TileLongLength * Util.h(TilePerH);
+                    // this.next += TileLongLength * w;
             //     }else{
-            //         new TileBig( x, y - Util.h(TilePerH)*0.5 );
-            //         this.next += randI( 2, 5+1 ) * Util.h(TilePerH);
+            //         new TileBig( x, y - w*0.5 );
+            //         this.next += randI( 2, 5+1 ) * w;
             //     }
             // }
         }

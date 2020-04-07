@@ -9,7 +9,7 @@ class Main extends eui.UILayer {
     }
  
     private async addToStage() {
-        // await this.loadResource();
+        await this.loadResource();
 
         Util.initial( this );
         GameObject.initial( this.stage );
@@ -20,15 +20,15 @@ class Main extends eui.UILayer {
         egret.startTick(this.tickLoop, this);
     }
 
-    // private async loadResource() {
-    //     try {
-    //         await RES.loadConfig("resource/default.res.json", "resource/");
-    //         await RES.loadGroup("preload", 0);
-    //     }
-    //     catch (e) {
-    //         console.error(e);
-    //     }
-    // }
+    private async loadResource() {
+        try {
+            await RES.loadConfig("resource/default.res.json", "resource/");
+            await RES.loadGroup("preload", 0);
+        }
+        catch (e) {
+            console.error(e);
+        }
+    }
 
     tickLoop(timeStamp:number):boolean{
         // PhysicsObject.progress();

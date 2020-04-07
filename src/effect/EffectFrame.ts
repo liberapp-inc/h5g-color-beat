@@ -47,7 +47,9 @@ class EffectFrame extends GameObject{
         shape.x = x;
         shape.y = y;
         shape.graphics.lineStyle( 10, color, alpha );
+        shape.graphics.beginFill( color, alpha * 0.5 )
         shape.graphics.drawRect( -0.5*w, -0.5*h, w, h );
+        shape.graphics.endFill();
     }
 
     update() {

@@ -11,8 +11,8 @@ class SoundEffect extends egret.DisplayObjectContainer {
     public static I:SoundEffect = null;
 
     files:string[] = [ "se_m1.mp3", "se_p0.mp3", "se_p2.mp3", "se_p4.mp3", "se_p5.mp3", "se_p10.mp3" ];
-
     sounds:egret.Sound[] = [];
+    loaded:number = 0;
 
     public constructor() {
         super();
@@ -30,6 +30,7 @@ class SoundEffect extends egret.DisplayObjectContainer {
     private onLoadComplete(event:egret.Event):void {
         //获取加载到的 Sound 对象
         // this.sounds[ix] = <egret.Sound>event.target;
+        this.loaded++;
     }
 
     // private startLoad():void {
@@ -48,8 +49,8 @@ class SoundEffect extends egret.DisplayObjectContainer {
     // }
 
     play( ix:number ){
-        //播放音乐
-        // egret.log("play");
+        if( this.loaded < this.sounds.length ) return;
+        
         var channel:egret.SoundChannel = this.sounds[ix].play(0.0, 1);
         // channel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
     }

@@ -10,8 +10,7 @@ class TileBig extends Tile{
     constructor( x:number, y:number ) {
         super( x, y );
 
-        this.sizeW *= tileBigScale;
-        this.sizeH *= tileBigScale;
+        this.size *= tileBigScale;
         this.display.scaleX = this.display.scaleY = tileBigScale;
     }
 

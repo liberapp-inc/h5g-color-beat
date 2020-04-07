@@ -1,6 +1,13 @@
 // Liberapp 2020 - Tahiti Katagai
 // スコア表示
 
+enum Beat{
+    None = 0,
+    Good,
+    Great,
+    Perfect,
+}
+
 class Score extends GameObject{
 
     static I:Score = null;   // singleton instance
@@ -8,37 +15,63 @@ class Score extends GameObject{
     point:number = 0;
     bestScore:number = 0;
     text:egret.TextField = null;
-    // textBest:egret.TextField = null;
+    textBeat:egret.TextField = null;
+    beatFrame:number = 0;
 
     constructor() {
         super();
 
         Score.I = this;
         this.point = 0;
+        this.bestScore = Util.getSaveDataNumber( SaveKeyBestScore, DefaultBestScore );
+
         this.text = Util.newTextField("", Util.width / 22, FONT2_COLOR, 0.0, 0.0, true, true);
         GameObject.baseDisplay.addChild( this.text );
 
-        this.bestScore = Util.getSaveDataNumber( SaveKeyBestScore, DefaultBestScore );
-        //?? test ハイスコアいつでもテスト用
-        // this.bestScore = 3;
+        this.textBeat = Util.newTextField("", Util.width / 18, FONT2_COLOR, 0.5, 0.9, true, true);
+        GameObject.baseDisplay.addChild( this.textBeat );
     }
     
     onDestroy() {
         this.text.parent.removeChild( this.text );
         this.text = null;
-        // this.textBest.parent.removeChild( this.textBest );
-        // this.textBest = null;
+        this.textBeat.parent.removeChild( this.textBeat );
+        this.textBeat = null;
         Score.I = null;
     }
 
-    update(){}
-
-    addPoint( point:number=1 ){
-        this.setPoint( this.point + point );
+    update(){
+        if( this.beatFrame > 0 ){
+            this.beatFrame--;
+            if( this.beatFrame > 6 ){
+                this.textBeat.scaleX += (1 - this.textBeat.scaleX) * 0.5;
+                this.textBeat.scaleY += (1 - this.textBeat.scaleY) * 0.5;
+            }else{
+                this.textBeat.scaleY *= 0.5;
+                if( this.beatFrame == 0 ){
+                    this.textBeat.text = "";
+                    this.textBeat.scaleX = 1;
+                    this.textBeat.scaleY = 1;
+                }
+            }
+            this.textBeat.x = Util.w( 0.5 ) - this.textBeat.width/2;
+            this.textBeat.y = Util.h( 0.9 ) - this.textBeat.height/2;
+        }
     }
 
-    setPoint( point:number ){
-		// if(this.Meter != 0) g.drawString("走行距離:"+this.count+"M",10,35);
+    addPoint( beat:Beat ){
+        this.setPoint( this.point + beat );
+        switch( beat ){
+            case Beat.Good:    this.textBeat.text = "GOOD"; break;
+            case Beat.Great:   this.textBeat.text = "Great"; break;
+            case Beat.Perfect: this.textBeat.text = "Perfet"; break;
+        }
+        this.textBeat.scaleX = 1.5;
+        this.textBeat.scaleY = 1.5;
+        this.beatFrame = 30;
+    }
+
+    private setPoint( point:number ){
         const prev = this.point.toFixed();
         const next = point.toFixed();
         this.point = point;

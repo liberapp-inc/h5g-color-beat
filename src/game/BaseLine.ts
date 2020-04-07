@@ -2,13 +2,14 @@
 // 基準ライン
 
 const LineColor = 0xff40d0;
+const BaseLineY = 1024*0.7;
 
 class BaseLine extends GameObject{
 
     constructor() {
         super();
 
-        this.setShape( Util.h(0.7) );
+        this.setShape( BaseLineY );
     }
 
     onDestroy(){
