@@ -46,6 +46,8 @@ class Game extends GameObject{
     }
 
     touchBegin(e:egret.TouchEvent){
+        Tile.checkTouch( e.localX, e.localY );
+
         this.localTouchBegan = 
         this.press = 
         this.touch = true;

@@ -1,6 +1,6 @@
 // Liberapp 2020 - Tahiti Katagai
 // タイル大
-
+/*
 const tileBigScale = 2;
 
 class TileBig extends Tile{
@@ -47,3 +47,4 @@ class TileBig extends Tile{
     }
 }
 
+*/

@@ -1,0 +1,25 @@
+{
+	"groups": [
+		{
+			"keys": "yellow_png,cyan_png,purple_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/cyan.png",
+			"type": "image",
+			"name": "cyan_png"
+		},
+		{
+			"url": "assets/purple.png",
+			"type": "image",
+			"name": "purple_png"
+		},
+		{
+			"url": "assets/yellow.png",
+			"type": "image",
+			"name": "yellow_png"
+		}
+	]
+}

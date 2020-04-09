@@ -7,16 +7,15 @@ class ColorGround extends GameObject{
 
     tweens:egret.Tween[] = [];
 
-    constructor( tex:string ) {
+    constructor( tex:string, scale:number=1 ) {
         super();
 
-        this.tex = Util.newBitmap( tex, Util.w(rand01()), Util.h(rand01()*0.6), 700 );
+        this.tex = Util.newBitmap( tex, Util.w(rand01()), Util.h(rand01()*0.6), 700 * scale );
         GameObject.gameDisplay.addChild( this.tex );
-
 
         this.setMoveX();
         this.setMoveY();
-       this.setAlpha();
+        this.setAlpha();
     }
 
     onDestroy(){
@@ -37,8 +36,8 @@ class ColorGround extends GameObject{
     setAlpha(){
         egret.Tween.get(this.tex,{loop:true})
             .set({alpha:0.2}, 0)
-            .to({alpha:0.7}, randF( 3000, 8000 ))
-            .to({alpha:0.2}, randF( 3000, 8000 ))
+            .to({alpha:0.7}, randF( 1000, 9000 ))
+            .to({alpha:0.2}, randF( 1000, 9000 ))
     }
 
     update() {
