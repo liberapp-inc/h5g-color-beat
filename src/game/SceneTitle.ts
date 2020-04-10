@@ -8,6 +8,9 @@ class SceneTitle extends GameObject{
     settingsButton:Button = null;
 
     static loadScene() {
+        new ColorGround( "cyan_png", 1.5 );
+        new ColorGround( "purple_png", 1.0 );
+        new ColorGround( "yellow_png", 0.5 );
         new SoundEffect();
         new SceneTitle();
     }

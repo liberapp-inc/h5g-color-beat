@@ -14,7 +14,7 @@ class EffectFrame extends GameObject{
 
     vx:number = 0;
     vy:number = 0;
-    vr:number = 0.8;
+    vr:number = 0.7;
 
     rate:number = 0;
     delta:number = (1/20);
@@ -46,8 +46,8 @@ class EffectFrame extends GameObject{
 
         shape.x = x;
         shape.y = y;
-        shape.graphics.lineStyle( 10, color, alpha );
-        shape.graphics.beginFill( color, alpha * 0.5 )
+        shape.graphics.lineStyle( 10, color, alpha * 0.4 );
+        shape.graphics.beginFill( color, alpha * 0.8 )
         shape.graphics.drawRect( -0.5*w, -0.5*h, w, h );
         shape.graphics.endFill();
     }

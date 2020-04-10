@@ -9,26 +9,22 @@ class TileLong extends Tile{
     length:number = TileLongLength;
 
     constructor( x:number, y:number ) {
-        super( x, y );
+        super( x, y, false );
 
+        this.setShape();
         this.sizeH = this.size * this.length;
         this.Y += this.size*0.5;    // top
         this.Y -= this.sizeH*0.5;   // to center
-        this.display.scaleX = 0.8;
-        this.display.scaleY = this.length;
-        this.display.rotation = 0;
+
+        // this.display.scaleX = 0.8;
+        // this.display.scaleY = this.length;
+        // this.display.rotation = 0;
     }
 
-    onDestroy(){
-        Tile.tiles = Tile.tiles.filter( obj => obj != this );
-    }
-
-    setShape(x:number, y:number){
+    setShape(){
         this.display = new egret.Shape();
         GameObject.gameDisplay.addChild(this.display);
         let shape = this.display as egret.Shape;
-        shape.x = x;
-        shape.y = y;
         shape.graphics.lineStyle( 10, this.color );
         // shape.graphics.beginFill(TileColor);
         const s = this.size;
