@@ -7,6 +7,7 @@ class GameOver extends GameObject{
 
     texts:egret.TextField[] = [];
     retryButton:Button = null;
+    backButton:Button = null;
     step:number = 0;
     readonly fadeInFrame:number = 64;
 
@@ -33,6 +34,7 @@ class GameOver extends GameObject{
         this.step++;
         if( this.step == this.fadeInFrame ){
             this.retryButton = new Button("リトライ", Util.width/16, BACK_COLOR, 0.50, 0.55, 0.4, 0.1, FONT2_COLOR, 1.0, false, this.onTapRetry );
+            this.backButton = new Button("<", Util.width/16, BACK_COLOR, 0.15, 0.10, 0.2, 0.1, FONT2_COLOR, 1.0, false, this.onTapBack );
             
             if( Score.I.point > Score.I.bestScore ){
                 Util.setSaveDataNumber( SaveKeyBestScore, Score.I.point );
@@ -47,6 +49,8 @@ class GameOver extends GameObject{
 
     onTapRetry(){
         GameObject.transit = ScenePlay.loadScene;
-        // this.destroy();
+    }
+    onTapBack(){
+        GameObject.transit = SceneTitle.loadScene;
     }
 }

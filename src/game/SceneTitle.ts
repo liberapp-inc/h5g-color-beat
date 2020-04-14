@@ -11,6 +11,7 @@ class SceneTitle extends GameObject{
         new ColorGround( "cyan_png", 1.5 );
         new ColorGround( "purple_png", 1.0 );
         new ColorGround( "yellow_png", 0.5 );
+        new ColorGround( "cyan_png", 0.5 );
         new SoundEffect();
         new SceneTitle();
     }
@@ -22,9 +23,9 @@ class SceneTitle extends GameObject{
         this.texts[1] = Util.newTextField("流れてくるカラーノートをタップ！", Util.width / 20, FONT_COLOR, 0.5, 0.35, true, false);
 
         let bestScore = Util.getSaveDataNumber( SaveKeyBestScore, DefaultBestScore );
-        this.texts[2] = Util.newTextField("BEST"+bestScore+"", Util.width / 14, FONT_COLOR, 0.5, 0.45, true, true);
+        this.texts[2] = Util.newTextField("BEST "+bestScore+"", Util.width / 14, FONT_COLOR, 0.5, 0.45, true, true);
 
-        this.startButton = new Button("スタート", Util.width/16, BACK_COLOR, 0.50, 0.70, 0.7, 0.12, FONT_COLOR, 1.0, true, this.onTapStart );
+        this.startButton = new Button("スタート", Util.width/16, BACK_COLOR, 0.50, 0.70, 0.7, 0.12, FONT_COLOR, 1.0, false, this.onTapStart );
 
         this.texts.forEach( text =>{ if( text ){ GameObject.baseDisplay.addChild( text ); } });
     }

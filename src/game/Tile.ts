@@ -48,12 +48,13 @@ class Tile extends GameObject{
     }
 
     update() {
+        if( GameOver.I != null ) return;
+        
         this.Y += Game.I.speed;
 
         // 通過みのがし
         if( this.checkFall() ){
-            // new GameOver();
-            this.destroy();
+            new GameOver();
         }
     }
 
@@ -79,7 +80,8 @@ class Tile extends GameObject{
     }
 
     checkFall():boolean{
-        return ( this.Y >= Util.height + this.size );
+        // return ( this.Y > Util.height + this.size );
+        return ( this.Y > Util.height );
     }
 
     defeated(){
@@ -88,7 +90,8 @@ class Tile extends GameObject{
 
         Score.I.addPoint( this.getPoint( this.Y ) );
 
-        for( let i=0 ; i<4 ; i++ ){
+        let count = ( Main.averageFrame < 1.2 ) ? 5 : 2;
+        for( let i=0 ; i<count ; i++ ){
             // new Debris( this.X, this.Y );
             let vx = randF( -1, +1 ) * 25;
             let vy = randF( -1, +1 ) * 25;

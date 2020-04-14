@@ -25,10 +25,10 @@ class Score extends GameObject{
         this.point = 0;
         this.bestScore = Util.getSaveDataNumber( SaveKeyBestScore, DefaultBestScore );
 
-        this.text = Util.newTextField("", Util.width / 22, FONT2_COLOR, 0.0, 0.0, true, true);
+        this.text = Util.newTextField("0", Util.width / 22, FONT2_COLOR, 0.0, 0.0, true, true);
         GameObject.baseDisplay.addChild( this.text );
 
-        this.textBeat = Util.newTextField("", Util.width / 18, FONT2_COLOR, 0.5, 0.9, true, true);
+        this.textBeat = Util.newTextField("", Util.width / 18, FONT2_COLOR, 0.5, 0.8, true, true);
         GameObject.baseDisplay.addChild( this.textBeat );
     }
     
@@ -55,7 +55,7 @@ class Score extends GameObject{
                 }
             }
             this.textBeat.x = Util.w( 0.5 ) - this.textBeat.width/2;
-            this.textBeat.y = Util.h( 0.9 ) - this.textBeat.height/2;
+            this.textBeat.y = Util.h( 0.8 ) - this.textBeat.height/2;
         }
     }
 
