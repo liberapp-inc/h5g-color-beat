@@ -63,8 +63,8 @@ class Score extends GameObject{
         this.setPoint( this.point + beat );
         switch( beat ){
             case Beat.Good:    this.textBeat.text = "GOOD"; break;
-            case Beat.Great:   this.textBeat.text = "Great"; break;
-            case Beat.Perfect: this.textBeat.text = "Perfet"; break;
+            case Beat.Great:   this.textBeat.text = "GREAT"; break;
+            case Beat.Perfect: this.textBeat.text = "PERFECT"; break;
         }
         this.textBeat.scaleX = 1.5;
         this.textBeat.scaleY = 1.5;
