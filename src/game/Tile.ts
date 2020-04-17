@@ -90,7 +90,7 @@ class Tile extends GameObject{
 
         Score.I.addPoint( this.getPoint( this.Y ) );
 
-        let count = ( Main.averageFrame < 1.2 ) ? 5 : 2;
+        let count = ( Main.averageFrame < 1.2 ) ? 3 : 1;
         for( let i=0 ; i<count ; i++ ){
             // new Debris( this.X, this.Y );
             let vx = randF( -1, +1 ) * 25;

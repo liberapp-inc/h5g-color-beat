@@ -4,8 +4,10 @@
 class ScenePlay extends GameObject{
 
     static loadScene() {
-        new ColorGround( "cyan_png", 1.5 );
-        new ColorGround( "purple_png", 1.0 );
+        if( randBool() )
+            new ColorGround( "cyan_png", 1.5 );
+        else
+            new ColorGround( "purple_png", 1.0 );
 
         new SoundEffect();
         new Game();
